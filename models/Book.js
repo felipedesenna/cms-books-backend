@@ -4,7 +4,8 @@ const BookSchema = new mongoose.Schema({
     bookID: Number,
     title: String,
     author: String,
-    publicationYear: Number
+    publicationYear: Number,
+    popular: Boolean
 });
 
 module.exports = mongoose.model('Book', BookSchema);

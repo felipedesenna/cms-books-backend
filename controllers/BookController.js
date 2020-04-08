@@ -16,6 +16,7 @@ module.exports = {
                 title: req.body.title,
                 author: req.body.author,
                 publicationYear: req.body.publicationYear,
+                popular: false,
                 bookID: bookID
             });
 
@@ -25,6 +26,7 @@ module.exports = {
                 title: req.body.title,
                 author: req.body.author,
                 publicationYear: req.body.publicationYear,
+                popular: false,
                 bookID: 0
             });
 
