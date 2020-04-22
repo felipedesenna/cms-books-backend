@@ -46,7 +46,8 @@ module.exports = {
         const newBook = await Book.updateOne({ bookID: id }, {
             title: req.body.title,
             author: req.body.author,
-            publicationYear: req.body.publicationYear
+            publicationYear: req.body.publicationYear,
+            popular: req.body.popular
         });
 
         return res.json(newBook);
