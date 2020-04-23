@@ -18,6 +18,8 @@ routes.use(authMiddleware);
 routes.post('/api/books', BookController.store);
 routes.get('/api/books/:id', BookController.show);
 routes.put('/api/books/:id', BookController.update);
+routes.put('/api/books', BookController.updatePopularOld);
+routes.patch('/api/books/:id', BookController.updatePopular);
 routes.delete('/api/books/:id', BookController.delete);
 
 routes.post('/api/readers', ReaderController.store);

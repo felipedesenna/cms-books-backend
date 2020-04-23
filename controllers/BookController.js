@@ -9,7 +9,7 @@ module.exports = {
 
     async store(req, res) {
         const books = await Book.find({}).sort('-bookID');
-        
+
         if (books.length > 0) {
             const bookID = books[0].bookID + 1;
             const newBook = await Book.create({
@@ -46,11 +46,27 @@ module.exports = {
         const newBook = await Book.updateOne({ bookID: id }, {
             title: req.body.title,
             author: req.body.author,
-            publicationYear: req.body.publicationYear,
-            popular: req.body.popular
+            publicationYear: req.body.publicationYear
         });
 
         return res.json(newBook);
+    },
+
+    async updatePopularOld(req, res) {
+        const newPopularOld = await Book.updateMany({ "popular": true },
+            { "$set": { popular: req.body.popular } }
+        );
+
+        return res.json(newPopularOld);
+    },
+
+    async updatePopular(req, res) {
+        const id = req.params.id;
+        const newPopular = await Book.updateOne({ bookID: id }, {
+            popular: req.body.popular
+        });
+
+        return res.json(newPopular);
     },
 
     async delete(req, res) {
