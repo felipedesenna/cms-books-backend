@@ -19,6 +19,12 @@ steps:
     npm install
   displayName: 'npm install'
 
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'current'
+    downloadType: 'specific'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'sonarConnection'
