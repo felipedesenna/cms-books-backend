@@ -32,7 +32,7 @@ steps:
   inputs:
     buildType: 'current'
     downloadType: 'specific'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    downloadPath: '$(System.DefaultWorkingDirectory)'
 
 - task: SonarCloudPrepare@1
   inputs:
