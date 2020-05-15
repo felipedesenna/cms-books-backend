@@ -9,6 +9,12 @@ trigger:
 pool:
   vmImage: 'vs2017-win2016'
 
+variables:
+  project_name: 'cms-books-backend'
+  sonarcloud_project: 'cms-books-backend'
+  sonarcloud_organization: 'felipe-de-senna20'
+  sonarcloud_account: 'sonarConnection'
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -19,11 +25,29 @@ steps:
     npm install
   displayName: 'npm install'
 
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'current'
+    targetPath: '$(Pipeline.Workspace)'
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: '$(sonarcloud_account)'
+    organization: '$(sonarcloud_organization)'
+    scannerMode: 'MSBuild'
+    projectKey: '$(sonarcloud_project)'
+    projectName: '$(project_name)'
+
+- task: SonarCloudAnalyze@1
+  displayName: Finish Sonarqube Analysis
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)'
-
-- task: SonarQubePostTest@1
 
 - task: ArchiveFiles@2
   inputs:
