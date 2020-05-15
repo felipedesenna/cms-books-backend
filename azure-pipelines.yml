@@ -28,10 +28,11 @@ steps:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: false
 
-- task: DownloadPipelineArtifact@2
+- task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'current'
-    targetPath: '$(Pipeline.Workspace)'
+    downloadType: 'specific'
+    downloadPath: '$(System.ArtifactsDirectory)'
 
 - task: SonarCloudPrepare@1
   inputs:
