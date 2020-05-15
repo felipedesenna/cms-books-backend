@@ -23,6 +23,8 @@ steps:
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)'
 
+- task: SonarQubePostTest@1
+
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
