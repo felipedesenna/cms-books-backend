@@ -38,6 +38,5 @@ steps:
   inputs:
     SonarCloud: 'sonarConnection'
     organization: 'felipe-de-senna20'
-    scannerMode: 'MSBuild'
-    projectKey: 'cms-books-backend'
-    projectName: 'cmsBooksBackend'
+    scannerMode: 'CLI'
+    configMode: 'file'
