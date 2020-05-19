@@ -42,6 +42,9 @@ steps:
     projectKey: 'cms-books-backend'
     projectName: 'cmsBooksBackend'
 
+- script: |
+    npm install && start
+
 - task: SonarCloudAnalyze@1
 
 - task: SonarCloudPublish@1
